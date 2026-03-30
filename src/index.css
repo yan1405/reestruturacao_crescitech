@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .snap-section {
+    scroll-snap-align: start;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+  }
+  
+  /* Telas claras: pontos turquesa, opacidade 10% */
+  .bg-dots {
+    background-image: radial-gradient(circle, #00B5C5 1.5px, transparent 1.5px);
+    background-size: 40px 40px;
+    opacity: 0.10;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1; /* sobre os blobs base */
+  }
+  
+  /* Telas escuras: pontos brancos, opacidade 8% */
+  .bg-dots-white {
+    background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.08;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1; /* sobre os blobs base */
+  }
+  
+  /* Decoração global substituída pela sidebar em componente,
+     mas mantemos deco-number para uso caso precise base, porém agora usamos top left. */
+  .deco-number {
+    position: absolute;
+    font-family: 'Syne', sans-serif;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  .writing-vertical-rl {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
