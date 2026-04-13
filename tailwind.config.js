@@ -16,8 +16,9 @@ export default {
         }
       },
       fontFamily: {
-        display: ['"Syne"', 'sans-serif'],
-        body: ['"DM Sans"', 'sans-serif'],
+        impact: ['"Impact"', '"Arial Narrow"', 'sans-serif'],
+        montserrat: ['"Montserrat"', 'sans-serif'],
+        lato: ['"Lato"', 'sans-serif'],
         script: ['"Pacifico"', 'cursive'],
       }
     }

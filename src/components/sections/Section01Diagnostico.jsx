@@ -3,138 +3,112 @@ import { motion } from 'framer-motion';
 export default function Section01Diagnostico() {
   const container = {
     hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
-
   const item = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     show: { y: 0, opacity: 1, transition: { duration: 0.6 } }
   };
 
   return (
-    <section className="snap-section bg-white relative">
-      <div 
-        className="absolute top-0 right-0 w-[400px] h-[400px] opacity-15 pointer-events-none" 
-        style={{ background: 'radial-gradient(circle, #00B5C5 0%, transparent 70%)' }}
-      />
-      
+    <section className="snap-section bg-gray-50 relative p-0 flex flex-col pt-[5vh] pb-[4vh]">
       <div className="bg-dots" />
 
-      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 text-[#1D3557] writing-vertical-rl rotate-180 uppercase tracking-widest font-body pointer-events-none z-20">
+      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 text-[#1D3557] writing-vertical-rl rotate-180 uppercase tracking-widest font-montserrat z-20 pointer-events-none">
         CRESCITECH × FRAIDAY 2026
       </div>
-      
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full h-full flex flex-col pt-[12vh]">
-        
-        {/* Split View Superior */}
-        <div className="flex flex-col md:flex-row justify-between w-full flex-1">
-          {/* Esquerda: Título e Dado */}
-          <div className="w-full md:w-[45%] flex flex-col">
-            <div className="text-xs text-[#1D3557]/40 uppercase tracking-widest font-bold mb-6">
-              01 / 09
-            </div>
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={container}
-            >
-              <motion.h2 variants={item} className="font-display font-extrabold text-[#1D3557] text-5xl md:text-6xl mb-4 leading-tight tracking-tight">
-                O diagnóstico atual<br/> da Crescitech
-              </motion.h2>
-              
-              <motion.div variants={item} className="w-12 h-1 bg-ct-accent mb-4" />
-              
-              <motion.p variants={item} className="font-body font-light text-[#A8C0D6] text-2xl">
-                Onde estamos e por que<br/> precisamos mudar agora.
-              </motion.p>
-            </motion.div>
-            
-            {/* Card Dado de Mercado Embutido à Esquerda */}
-            <motion.div 
-               className="mt-8 bg-[#1D3557] border-l-[6px] border-ct-accent p-6 max-w-[380px] shadow-2xl relative"
-               initial={{ opacity: 0, x: -30 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               transition={{ delay: 0.6 }}
-            >
-              <div className="text-[10px] text-white/50 uppercase tracking-[0.2em] mb-2 font-bold">Oportunidade de Mercado</div>
-              <div className="text-5xl font-display font-extrabold text-white mb-2 tracking-tighter">73%</div>
-              <div className="text-[14px] font-body text-white/80 leading-relaxed font-normal">
-                Das empresas pretendem adotar IA em 2025/2026, abrindo uma janela de posicionamento única no mercado B2B.
-              </div>
-            </motion.div>
-          </div>
 
-          {/* Direita: Diagrama Caos */}
-          <div className="w-full md:w-[50%] flex justify-center items-center relative h-[300px] lg:h-auto">
-             <svg viewBox="0 0 350 350" className="w-[90%] h-[90%] overflow-visible">
-                {/* Centro - Marca Única */}
-                <motion.circle cx="175" cy="175" r="45" fill="#1D3557" stroke="#00B5C5" strokeWidth="4" 
-                  initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ duration: 0.5 }}
-                />
-                <motion.text x="175" y="180" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="bold" fontFamily="Syne"
-                  initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.5 }}
-                >Marca Única</motion.text>
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col h-full px-[5%]">
 
-                {/* Seta 1 - Consultoria */}
-                <motion.path d="M 160 130 C 160 60 100 30 50 60" fill="none" stroke="#FF6B35" strokeWidth="3"
-                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ delay: 0.8, duration: 1 }}
-                />
-                <motion.polygon points="50,60 65,55 58,70" fill="#FF6B35" 
-                  initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.8 }}
-                />
-                <motion.text x="30" y="40" fill="#333" fontSize="13" fontFamily="DM Sans" fontWeight="bold" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.8 }}>Consultoria</motion.text>
+        {/* Top Split: Grid 2 cols */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full shrink-0 mb-auto mt-2 h-[45vh]">
+           
+           {/* Left Col: Título + Card */}
+           <div className="flex flex-col justify-center h-full">
+             <div className="text-xs text-[#1D3557]/40 uppercase tracking-widest font-montserrat font-bold mb-4">01 / 09</div>
+             <motion.h2 
+               className="font-impact text-[#1D3557] text-4xl xl:text-5xl mb-6 leading-none tracking-normal"
+               initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
+             >
+               O atual cenário da<br/>prestação de serviços B2B
+             </motion.h2>
+             
+             {/* Data Card (73%) */}
+             <motion.div 
+               className="bg-[#1D3557] rounded-xl p-6 text-white w-[85%] max-w-md shadow-xl"
+               initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }} viewport={{ once: true }}
+             >
+                <div className="font-montserrat font-bold text-5xl xl:text-6xl text-[#F5A800] mb-2 tracking-tighter">73%</div>
+                <p className="font-montserrat font-[600] text-[15px] leading-tight text-[#F2F2F2]">
+                  Das empresas perdem receita devido ao caos organizacional interno e gargalos comunicativos.
+                </p>
+             </motion.div>
+           </div>
+           
+           {/* Right Col: Diagrama do Caos SVG Animado */}
+           <div className="flex items-center justify-center relative h-full">
+             <motion.div 
+               className="relative w-[340px] h-[340px]"
+               initial={{ scale: 0.8, opacity: 0 }} 
+               whileInView={{ scale: 1, opacity: 1 }} 
+               transition={{ duration: 0.8, ease: "easeOut" }} 
+               viewport={{ once: true }}
+             >
+                <svg viewBox="0 0 300 300" className="w-full h-full overflow-visible">
+                   {/* Arrows */}
+                   <g stroke="#FF4444" strokeWidth="3" markerEnd="url(#arrowhead)">
+                     {/* Dir-Sup (Consultoria) */}
+                     <path d="M 150 150 L 250 80" />
+                     {/* Dir-Inf (Educação) */}
+                     <path d="M 150 150 L 250 220" />
+                     {/* Esq (Tech) */}
+                     <path d="M 150 150 L 50 150" />
+                   </g>
 
-                {/* Seta 2 - Educação */}
-                <motion.path d="M 220 150 C 290 150 320 90 280 40" fill="none" stroke="#00B5C5" strokeWidth="3" flex="1"
-                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ delay: 0.8, duration: 1 }}
-                />
-                <motion.polygon points="280,40 295,45 285,55" fill="#00B5C5" 
-                  initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.8 }}
-                />
-                <motion.text x="290" y="30" fill="#333" fontSize="13" fontFamily="DM Sans" fontWeight="bold" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.8 }}>Educação</motion.text>
+                   {/* Center Circle */}
+                   <circle cx="150" cy="150" r="45" fill="#1D3557" />
+                   <text x="150" y="154" fill="#FFFFFF" fontSize="13" fontWeight="bold" fontFamily="Montserrat" textAnchor="middle">Crescitech</text>
 
-                {/* Seta 3 - Tech */}
-                <motion.path d="M 190 220 C 190 290 260 320 310 280" fill="none" stroke="#F5A800" strokeWidth="3"
-                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ delay: 0.8, duration: 1 }}
-                />
-                <motion.polygon points="310,280 300,290 295,275" fill="#F5A800" 
-                  initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.8 }}
-                />
-                <motion.text x="320" y="305" fill="#333" fontSize="13" fontFamily="DM Sans" fontWeight="bold" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.8 }}>Tech / SaaS</motion.text>
-             </svg>
-          </div>
+                   {/* Rectangles */}
+                   <g fontFamily="Montserrat" fontSize="11" fontWeight="bold">
+                     <rect x="230" y="60" width="85" height="30" rx="4" fill="#FFFFFF" stroke="#1D3557" strokeWidth="2" />
+                     <text x="272.5" y="79" fill="#1D3557" textAnchor="middle">Consultoria</text>
+
+                     <rect x="230" y="200" width="85" height="30" rx="4" fill="#FFFFFF" stroke="#1D3557" strokeWidth="2" />
+                     <text x="272.5" y="219" fill="#1D3557" textAnchor="middle">Educação</text>
+
+                     <rect x="10" y="135" width="85" height="30" rx="4" fill="#FFFFFF" stroke="#1D3557" strokeWidth="2" />
+                     <text x="52.5" y="154" fill="#1D3557" textAnchor="middle">Tech</text>
+                   </g>
+
+                   <defs>
+                     <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                       <polygon points="0 0, 6 2, 0 4" fill="#FF4444" />
+                     </marker>
+                   </defs>
+                </svg>
+             </motion.div>
+           </div>
+
         </div>
 
-        {/* 3 Cards Abaixo Estáticos */}
+        {/* Bot Três cards */}
         <motion.div 
-          className="w-full mb-[6vh] mt-auto"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left mt-auto flex-1 items-end min-h-[30vh]"
+          variants={container} initial="hidden" whileInView="show" viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              "Uma única marca tentando operar consultoria, educação e tech simultaneamente gerando diluição.",
-              "Confusão de posicionamento que limita o crescimento e dificulta vendas de produtos complementares.",
-              "A janela de mercado é AGORA: a maioria das PMEs busca adoção, mas faltam implementadores."
-            ].map((text, i) => (
-              <motion.div 
-                key={i}
-                variants={item}
-                className="bg-white border hover:border-ct-accent border-gray-200 p-8 shadow-sm transition-all h-[180px] flex flex-col justify-start relative overflow-hidden"
-              >
-                <div className="text-ct-accent font-display font-extrabold text-2xl mb-3 opacity-30 tracking-widest">0{i+1}</div>
-                <p className="text-[#333333] font-body text-[15px] leading-relaxed font-normal overflow-hidden">{text}</p>
-                {/* Degradê inferior pra caso o texto corte elegantemente */}
-                <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent" />
-              </motion.div>
-            ))}
-          </div>
+          {[
+            { title: "Descentralização extrema", desc: "A cada novo cliente, parceiro ou etapa, abre-se um WhatsApp novo e uma nova thread sem fim." },
+            { title: "Dependência de PESSOAS", desc: "O conhecimento da operação morre na cabeça do especialista e não é transmitido ou documentado." },
+            { title: "Efeito gargalo B2B", desc: "O serviço perde escalabilidade. Crescer o portfólio significa duplicar proporcionalmente o custo operacional." }
+          ].map((card, i) => (
+            <motion.div key={i} variants={item} className="bg-white p-6 shadow-xl border border-gray-100 flex flex-col h-[28vh] justify-between group overflow-hidden">
+              <span className="font-montserrat font-bold text-[#F5A800] text-3xl opacity-20 mb-1 leading-none tracking-tighter">0{i+1}</span>
+              <h3 className="font-montserrat font-bold text-[#1D3557] text-[18px] xl:text-[20px] mb-3 leading-tight">{card.title}</h3>
+              <p className="font-lato font-normal text-gray-500 text-[14px] leading-relaxed line-clamp-3">{card.desc}</p>
+              <div className="w-10 h-1 bg-[#F5A800] mt-auto opacity-50 group-hover:w-full group-hover:opacity-100 transition-all duration-500" />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

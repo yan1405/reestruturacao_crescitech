@@ -1,98 +1,124 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 export default function Section02Proposta() {
+  const [inView, setInView] = useState(false);
+  const [showClean, setShowClean] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      const t = setTimeout(() => setShowClean(true), 800);
+      return () => clearTimeout(t);
+    }
+  }, [inView]);
+
   return (
-    <section className="snap-section bg-[#1D3557] relative">
-      <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-ct-accent blur-[80px] opacity-15 pointer-events-none translate-x-1/4 -translate-y-1/4" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-white blur-[80px] opacity-10 pointer-events-none -translate-x-1/4 translate-y-1/4" />
-      
+    <section className="snap-section bg-[#1D3557] relative p-0 flex flex-col pt-[5vh] pb-[4vh]">
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] rounded-full bg-ct-accent blur-[80px] opacity-[0.08] pointer-events-none -translate-x-1/4 -translate-y-1/4" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#F5A800] blur-[80px] opacity-[0.05] pointer-events-none translate-x-1/4 -translate-y-1/4" />
       <div className="bg-dots-white" />
 
-      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 text-white writing-vertical-rl rotate-180 uppercase tracking-widest font-body pointer-events-none z-20">
+      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 text-[#A8C0D6] writing-vertical-rl rotate-180 uppercase tracking-widest font-montserrat z-20 pointer-events-none">
         CRESCITECH × FRAIDAY 2026
       </div>
       
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full h-full flex flex-col pt-[10vh] pb-[6vh]">
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full h-full flex flex-col px-[5%] justify-between">
         
-        {/* Título */}
-        <div className="flex flex-col text-left mb-6">
-          <div className="text-xs text-white/40 uppercase tracking-widest font-bold mb-4">02 / 09</div>
-          <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <h2 className="font-display font-extrabold text-white text-5xl md:text-6xl mb-4 leading-tight">A proposta central</h2>
-            <div className="w-12 h-1 bg-white" />
+        {/* Título Esquerda Top */}
+        <div className="w-full flex-shrink-0">
+          <div className="text-xs text-white/40 uppercase tracking-widest font-montserrat font-bold mb-4">02 / 09</div>
+          <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} onViewportEnter={() => setInView(true)}>
+            <h2 className="font-impact text-white text-5xl md:text-6xl mb-4 leading-none tracking-normal">A reorganização estrutural</h2>
+            <div className="w-12 h-1 bg-[#00B5C5] mb-4" />
           </motion.div>
         </div>
 
-        {/* Diagrama Centralizado Organizado */}
-        <div className="w-full flex-1 flex justify-center items-center py-4 min-h-[300px]">
-          <svg viewBox="0 0 500 250" className="w-full max-w-[700px] h-full overflow-visible">
-            {/* Animacao: De 1 ponto central vira 2 blocos organizados */}
-            
-            {/* Seta conectiva Top-Bottom */}
-            <motion.path d="M 250 110 L 250 160" fill="none" stroke="#F2F2F2" strokeWidth="2" strokeDasharray="4 4"
-              initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ delay: 0.8, duration: 0.6 }}
-            />
-            <motion.polygon points="250,160 245,150 255,150" fill="#F2F2F2" 
-              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.4 }}
-            />
+        {/* Central Área: Diagramas (AnimatePresence) */}
+        <div className="flex-1 w-full flex items-center justify-center relative my-6">
+           <AnimatePresence mode="wait">
+             {!showClean ? (
+                // Chaos Diagram from Section 1
+                <motion.div 
+                   key="chaos"
+                   initial={{ opacity: 0, scale: 0.8 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   exit={{ opacity: 0, scale: 0.8 }}
+                   transition={{ duration: 0.5 }}
+                   className="w-[300px] h-[300px] absolute"
+                >
+                    <svg viewBox="0 0 300 300" className="w-full h-full overflow-visible">
+                       <g stroke="#FF4444" strokeWidth="3" markerEnd="url(#arrowhead2)">
+                         <path d="M 150 150 L 250 80" />
+                         <path d="M 150 150 L 250 220" />
+                         <path d="M 150 150 L 50 150" />
+                       </g>
+                       <circle cx="150" cy="150" r="45" fill="#FFFFFF" />
+                       <text x="150" y="154" fill="#1D3557" fontSize="13" fontWeight="bold" fontFamily="Montserrat" textAnchor="middle">Crescitech</text>
+                       <g fontFamily="Montserrat" fontSize="11" fontWeight="bold">
+                         <rect x="230" y="60" width="85" height="30" rx="4" fill="#1D3557" stroke="#00B5C5" strokeWidth="2" />
+                         <text x="272.5" y="79" fill="#FFFFFF" textAnchor="middle">Consultoria</text>
+                         <rect x="230" y="200" width="85" height="30" rx="4" fill="#1D3557" stroke="#00B5C5" strokeWidth="2" />
+                         <text x="272.5" y="219" fill="#FFFFFF" textAnchor="middle">Educação</text>
+                         <rect x="10" y="135" width="85" height="30" rx="4" fill="#1D3557" stroke="#00B5C5" strokeWidth="2" />
+                         <text x="52.5" y="154" fill="#FFFFFF" textAnchor="middle">Tech</text>
+                       </g>
+                       <defs>
+                         <marker id="arrowhead2" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                           <polygon points="0 0, 6 2, 0 4" fill="#FF4444" />
+                         </marker>
+                       </defs>
+                    </svg>
+                </motion.div>
+             ) : (
+                // Clean Structural Diagram
+                <motion.div 
+                   key="clean"
+                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                   animate={{ opacity: 1, scale: 1, y: 0 }}
+                   transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                   className="flex flex-col items-center absolute"
+                >
+                   {/* Crescitech Box */}
+                   <div className="w-[280px] h-[80px] bg-[#1D3557] rounded-[8px] flex flex-col items-center justify-center border border-[#00B5C5] shadow-lg shrink-0">
+                      <h3 className="font-impact text-white text-[20px] uppercase tracking-widest">Crescitech</h3>
+                      <span className="font-lato text-[#A8C0D6] text-[13px]">Hold. Consultoria e Educação</span>
+                   </div>
+                   
+                   {/* Arrow */}
+                   <div className="flex flex-col items-center my-3 relative shrink-0">
+                      <div className="w-0.5 h-10 bg-gradient-to-b from-[#00B5C5] to-[#F5A800]" />
+                      <div className="w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-transparent border-t-[#F5A800]" />
+                      <span className="font-montserrat text-white/50 text-[10px] uppercase font-bold absolute top-1/2 left-4 -translate-y-1/2 whitespace-nowrap">Subsidiária Tech</span>
+                   </div>
 
-            {/* Crescitech Bloco (Top) */}
-            <motion.rect x="150" y="50" width="200" height="60" rx="8" fill="#1D3557" stroke="#00B5C5" strokeWidth="2"
-              initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }}
-            />
-            <motion.text x="250" y="85" textAnchor="middle" fill="#fff" fontSize="24" fontWeight="bold" fontFamily="Syne"
-              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }}
-            >Crescitech</motion.text>
-
-            <motion.text x="135" y="82" fill="#A8C0D6" fontSize="13" fontFamily="DM Sans" textAnchor="end"
-              initial={{ opacity: 0, x: 10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}
-            >Educação & Consultoria</motion.text>
-
-            {/* FrAiDay Bloco (Bottom) */}
-            <motion.rect x="170" y="160" width="160" height="60" rx="8" fill="#F5A800" stroke="#0D0D0D" strokeWidth="2"
-               initial={{ scale: 0.8, opacity: 0, y: -20 }} whileInView={{ scale: 1, opacity: 1, y: 0 }} transition={{ delay: 1.5, duration: 0.5 }}
-            />
-            <motion.text x="250" y="200" textAnchor="middle" fill="#0D0D0D" fontSize="28" fontFamily="Pacifico, cursive"
-               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.8 }}
-            >frAIday</motion.text>
-            
-            <motion.text x="345" y="195" fill="#A8C0D6" fontSize="13" fontFamily="DM Sans" textAnchor="start"
-              initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 2.0 }}
-            >Subsidiária Tech & SaaS</motion.text>
-          </svg>
+                   {/* FrAiDay Box */}
+                   <div className="w-[280px] h-[80px] bg-[#F5A800] rounded-[8px] flex flex-col items-center justify-center shadow-lg shrink-0">
+                      <h3 className="font-impact text-[#0D0D0D] text-[20px] uppercase tracking-widest">FrAiDay</h3>
+                      <span className="font-lato text-[#0D0D0D]/80 text-[13px] font-bold">Automações, Software e IA</span>
+                   </div>
+                </motion.div>
+             )}
+           </AnimatePresence>
         </div>
 
-        {/* 2 Blocos Textuais Side by Side Inferior */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mt-auto px-4 md:px-0">
-          <motion.div 
-            className="bg-[#1D3557] border border-[#00B5C5]/30 p-10 shadow-2xl"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-             <h3 className="font-display font-extrabold text-white text-3xl mb-4">Crescitech</h3>
-             {/* Limitando linhas e legibilidade (Branco puro em dark) */}
-             <p className="font-body text-white text-[16px] leading-[1.6] line-clamp-3">
-               100% focada em consultoria corporativa e educação de I.A. voltada a empresários, executivos de C-Level e grandes bancas advocatícias.
-             </p>
-          </motion.div>
-
-          <motion.div 
-            className="bg-[#F5A800] p-10 shadow-2xl"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-             <h3 className="font-display font-extrabold text-[#0D0D0D] text-3xl mb-4">FrAiDay</h3>
-             {/* Limitando linhas e legibilidade (Preto em amarelo claro) */}
-             <p className="font-body text-[#0D0D0D] font-medium text-[16px] leading-[1.6] line-clamp-3">
-               A subsidiária ágil: opera SaaS, desenvolve automações (n8n/WhatsApp) e presta serviços de implantação de ferramentas para empresas.
-             </p>
-          </motion.div>
-        </div>
-
+        {/* Três blocos inferiores diretos ao ponto */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left mt-auto shrink-0 mb-[2vh]"
+          initial="hidden" whileInView="show" viewport={{ once: true }} variants={{
+            hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          {[
+            { title: "Separação de canais", text: "A educação não polui a tecnologia." },
+            { title: "Marca B2B orientada", text: "A automação via FrAiDay foca inteiramente em lucro e escala." },
+            { title: "Criação de esteiras", text: "A consultoria primária vira um produto SaaS ativo a longo prazo." }
+          ].map((b, i) => (
+            <motion.div key={i} variants={{ hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 }}} className="border-t border-[#00B5C5]/20 pt-4 flex flex-col">
+               <h4 className="font-montserrat font-bold text-white text-[15px] xl:text-[17px] mb-2">{b.title}</h4>
+               <p className="font-lato text-[#A8C0D6] text-[13px] xl:text-[14px] leading-relaxed line-clamp-3">{b.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

@@ -17,8 +17,8 @@ export default function Section08Onboarding() {
     { icon: <Send size={24}/>, t: "Bot Atende", desc: "Qualificação" },
     { icon: <FileEdit size={24}/>, t: "Typeform", desc: "Coleta dados" },
     { icon: <Database size={24}/>, t: "CRM Automático", desc: "Lead criado" },
-    { icon: <Calendar size={24}/>, t: "Calendly Flow", desc: "Agendamento auto" },
-    { icon: <Briefcase size={24}/>, t: "Início Consultoria", desc: "Reunião de kickoff" }
+    { icon: <Calendar size={24}/>, t: "Calendly Flow", desc: "Agendamento" },
+    { icon: <Briefcase size={24}/>, t: "Kickoff", desc: "Sessão 1" }
   ];
 
   return (
@@ -28,9 +28,9 @@ export default function Section08Onboarding() {
 
       {/* Top: 15vh Title */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto h-[15vh] flex flex-col justify-end px-[5%] pb-4 shrink-0">
-        <div className="text-xs text-[#1D3557]/40 uppercase tracking-widest font-bold mb-2">08 / 09</div>
+        <div className="text-xs text-[#1D3557]/40 uppercase tracking-widest font-montserrat font-bold mb-2">08 / 09</div>
         <motion.div initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }}>
-          <h2 className="font-display font-extrabold text-[#1D3557] text-4xl md:text-5xl leading-tight">Onboarding automatizado</h2>
+          <h2 className="font-impact text-[#1D3557] text-4xl md:text-5xl leading-tight">Onboarding automatizado</h2>
           <div className="w-12 h-1 bg-ct-accent mt-2" />
         </motion.div>
       </div>
@@ -41,7 +41,6 @@ export default function Section08Onboarding() {
            className="w-full flex justify-between items-center relative py-6"
            variants={flowContainer} initial="hidden" whileInView="show" viewport={{ once: true }}
          >
-            {/* SVG conectando em linha fluida */}
             <div className="absolute inset-x-[5%] top-[30%] h-1 bg-gray-100 z-0 flex items-center">
                 <motion.div 
                   className="h-full bg-gradient-to-r from-[#00B5C5] to-[#1D3557] w-full origin-left"
@@ -57,8 +56,8 @@ export default function Section08Onboarding() {
                  <div className="w-16 h-16 rounded-full bg-white text-[#1D3557] shadow-xl border-2 border-[#1D3557]/10 flex items-center justify-center mb-4 transition-transform hover:scale-110">
                     {st.icon}
                  </div>
-                 <h4 className="font-bold font-display text-[14px] text-[#1D3557] text-center leading-tight mb-1 h-8">{st.t}</h4>
-                 <p className="text-[12px] font-body text-gray-500 text-center w-full">{st.desc}</p>
+                 <h4 className="font-bold font-montserrat text-[14px] text-[#1D3557] text-center leading-tight mb-1 h-8">{st.t}</h4>
+                 <p className="text-[12px] font-lato text-gray-500 text-center w-full">{st.desc}</p>
               </motion.div>
             ))}
          </motion.div>
@@ -71,10 +70,10 @@ export default function Section08Onboarding() {
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}
          >
             <div className="bg-[#F5A800] px-6 py-3 flex items-center justify-between shrink-0">
-               <span className="text-[#0D0D0D] font-bold font-display text-[14px] uppercase tracking-widest flex items-center gap-2">
+               <span className="text-[#0D0D0D] font-bold font-montserrat text-[13px] uppercase tracking-widest flex items-center gap-2">
                  <Briefcase size={16}/> Ferramenta de FollowUp Interna
                </span>
-               <div className="bg-[#0D0D0D] text-white px-3 py-1.5 rounded text-[11px] font-bold flex items-center gap-1 shadow-sm uppercase tracking-wider">
+               <div className="bg-[#0D0D0D] text-white px-3 py-1.5 rounded text-[11px] font-bold font-montserrat flex items-center gap-1 shadow-sm uppercase tracking-wider">
                   <Plus size={12}/> Lead Novo
                </div>
             </div>
@@ -88,16 +87,16 @@ export default function Section08Onboarding() {
                ].map((col, c) => (
                   <div key={c} className="bg-white flex-1 rounded-xl shadow-sm border border-gray-200 p-3 min-w-[240px] max-w-[300px] flex flex-col h-full overflow-hidden shrink-0">
                      <div className="flex justify-between items-center mb-4 border-b border-gray-100 pb-2 px-1">
-                       <span className={`text-[12px] font-bold px-2.5 py-1 rounded-md ${col.bg} ${col.text} uppercase tracking-wider`}>{col.title} {(col.cards.length > 0) && `(${col.cards.length})`}</span>
+                       <span className={`text-[12px] font-bold font-montserrat px-2.5 py-1 rounded-md ${col.bg} ${col.text} uppercase tracking-wider`}>{col.title} {(col.cards.length > 0) && `(${col.cards.length})`}</span>
                        <MoreHorizontal size={16} className="text-gray-400"/>
                      </div>
 
                      <div className="flex flex-col gap-3 overflow-y-auto custom-scrollbar px-1">
                         {col.cards.map((card, cd) => (
                            <div key={cd} className="bg-white p-3.5 rounded-lg shadow-sm border border-gray-200 flex flex-col hover:border-[#F5A800] transition-colors cursor-pointer group">
-                              <span className="font-bold text-[14px] text-[#1D3557] mb-1 group-hover:text-[#F5A800] transition-colors">{card.n}</span>
-                              <span className="text-[#00B5C5] font-extrabold text-[13px] mb-3">{card.v}</span>
-                              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-500 bg-gray-50 px-2 py-1.5 rounded w-max">
+                              <span className="font-bold font-montserrat text-[14px] text-[#1D3557] mb-1 group-hover:text-[#F5A800] transition-colors">{card.n}</span>
+                              <span className="text-[#00B5C5] font-extrabold font-montserrat text-[13px] mb-3">{card.v}</span>
+                              <div className="flex items-center gap-1.5 font-lato text-[11px] font-semibold text-gray-500 bg-gray-50 px-2 py-1.5 rounded w-max border border-gray-100">
                                 <Calendar size={12} className="mb-0.5 text-gray-400"/> {card.m}
                               </div>
                            </div>

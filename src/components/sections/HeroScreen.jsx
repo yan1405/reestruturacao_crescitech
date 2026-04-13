@@ -3,35 +3,35 @@ import { ArrowDown } from 'lucide-react';
 
 export default function HeroScreen() {
   return (
-    <section className="snap-section bg-ct-primary text-white relative">
+    <section className="snap-section bg-[#1D3557] text-white relative">
       {/* Blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#00B5C5] blur-[100px] opacity-20 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[#1D3557] blur-[100px] opacity-20 pointer-events-none" />
       <div className="bg-dots-white" />
 
       {/* Assinatura */}
-      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 writing-vertical-rl rotate-180 uppercase tracking-widest font-body pointer-events-none text-white z-20">
+      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 writing-vertical-rl rotate-180 uppercase tracking-widest font-montserrat pointer-events-none text-white z-20">
         CRESCITECH × FRAIDAY 2026
       </div>
       
       <div className="relative z-10 w-full max-w-[1400px] mx-auto h-full flex flex-col pt-[15vh]">
         
-        <div className="absolute top-[-5vh] left-0 text-xs text-ct-secondary uppercase tracking-widest font-bold">
+        <div className="absolute top-[5vh] left-[5%] text-xs text-[#A8C0D6] uppercase tracking-widest font-montserrat font-bold">
           00 / 09
         </div>
 
         {/* Título */}
         <motion.div
-          className="w-full md:w-[70%]"
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, amount: 0.2 }}
+           className="w-full md:w-[70%] px-[5%]"
+           initial={{ y: 30, opacity: 0 }}
+           whileInView={{ y: 0, opacity: 1 }}
+           transition={{ duration: 0.8 }}
+           viewport={{ once: true, amount: 0.2 }}
         >
-          <h1 className="font-display font-extrabold text-[80px] md:text-[140px] leading-none mb-4 tracking-tighter text-white">
+          <h1 className="font-impact text-[80px] md:text-[140px] leading-none mb-4 tracking-normal text-white">
             Crescitech
           </h1>
-          <div className="w-12 h-1 bg-ct-accent mb-8" />
+          <div className="w-12 h-1 bg-[#00B5C5] mb-8" />
         </motion.div>
 
         {/* Diagrama emergindo - SVG Animado com Framer Motion (Centro/Direita) */}
@@ -58,7 +58,7 @@ export default function HeroScreen() {
              {/* Crescitech Box */}
              <motion.g initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 1.5 }}>
                <rect x="0" y="30" width="80" height="30" rx="4" fill="#00B5C5" fillOpacity="0.2" stroke="#00B5C5" strokeWidth="1" />
-               <text x="40" y="49" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="bold" fontFamily="Syne">Crescitech</text>
+               <text x="40" y="49" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="bold" fontFamily="Montserrat">Crescitech</text>
              </motion.g>
 
              {/* FrAiDay Box */}
@@ -77,24 +77,21 @@ export default function HeroScreen() {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true, amount: 0.2 }}
         >
-          <p className="font-body font-light text-2xl md:text-3xl text-ct-secondary whitespace-nowrap">
+          <p className="font-montserrat font-light text-2xl md:text-3xl text-[#A8C0D6] whitespace-nowrap tracking-wide">
             Uma nova estrutura para um novo momento.
           </p>
         </motion.div>
 
         {/* Scroll Indicator Pulse */}
         <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-50"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 2, duration: 1 }}
         >
-          <span className="text-[10px] uppercase tracking-[0.2em] mb-2 text-ct-secondary">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-          >
-            <ArrowDown size={18} className="text-ct-secondary" />
+          <span className="font-montserrat text-[10px] uppercase tracking-[0.2em] mb-2 text-[#A8C0D6]">Scroll</span>
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+            <ArrowDown size={18} className="text-[#A8C0D6]" />
           </motion.div>
         </motion.div>
       </div>
