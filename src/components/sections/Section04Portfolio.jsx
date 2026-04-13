@@ -1,110 +1,152 @@
 import { motion } from 'framer-motion';
+import { Target, CheckCircle2, FileVideo, TrendingUp, Settings, Bot, Webhook, Briefcase } from 'lucide-react';
 
 export default function Section04Portfolio() {
   const container = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
-
   const item = {
     hidden: { y: 15, opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+    show: { y: 0, opacity: 1, transition: { duration: 0.4 } }
   };
 
   const crescitechItems = [
-    "Consultoria estratégica em IA para PMEs",
-    "Programa de educação para executivos",
-    "Programa especializado para escritórios de advocacia",
-    "Diagnóstico público de maturidade em IA"
+    { icon: <Briefcase size={16} />, text: "Consultoria estratégica corporativa" },
+    { icon: <TrendingUp size={16} />, text: "Educação de IA para C-Level" },
+    { icon: <Target size={16} />, text: "IA para bancas advocatícias" },
+    { icon: <Settings size={16} />, text: "Diagnóstico de maturidade" }
   ];
 
   const fraidayItems = [
-    "Desenvolvimento de sites e sistemas",
-    "Automações via n8n e WhatsApp",
-    "SaaS (produto a definir)",
-    "Ferramenta de Follow Up",
-    "Kit de implantação jurídico",
-    "Serviços de AI First para empresas"
+    { icon: <Bot size={16} />, text: "SaaS de IA proprietário" },
+    { icon: <Webhook size={16} />, text: "Automações via n8n e WhatsApp" },
+    { icon: <FileVideo size={16} />, text: "AI First implementation" },
+    { icon: <CheckCircle2 size={16} />, text: "Aceleração tech B2B" }
   ];
 
   return (
-    <section className="snap-section bg-white relative">
-      {/* Telas claras: glow radial 20% a 30% da quina, opacidade 15% */}
-      {/* Glow turquesa no canto inferior esquerdo */}
-      <div 
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] opacity-15 pointer-events-none -translate-x-1/4 translate-y-1/4" 
-        style={{ background: 'radial-gradient(circle, #00B5C5 0%, transparent 70%)' }}
-      />
-      
-      {/* Grid de pontos turquesa */}
-      <div className="bg-dots" />
+    <section className="snap-section bg-white relative p-0 overflow-hidden">
+      {/* Container Full - 2 Half Panels sem padding global p/ background ir da beirada a beirada */}
+      <div className="absolute top-0 left-0 w-full h-[50vh] flex">
+         <div className="w-1/2 h-full bg-[#1D3557] relative overflow-hidden">
+           <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-ct-accent blur-[80px] opacity-[0.08] pointer-events-none translate-x-1/4 -translate-y-1/4" />
+           <div className="bg-dots-white" />
+         </div>
+         <div className="w-1/2 h-full bg-[#F5A800] relative overflow-hidden">
+           <div className="absolute top-0 left-0 w-[400px] h-[400px] rounded-full bg-[#0D0D0D] blur-[80px] opacity-[0.05] pointer-events-none -translate-x-1/4 -translate-y-1/4" />
+         </div>
+      </div>
 
-      {/* Assinatura periférica vertical */}
-      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 text-[#1D3557] writing-vertical-rl rotate-180 uppercase tracking-widest font-body pointer-events-none">
+      <div className="absolute top-1/2 right-4 -translate-y-1/2 text-xs opacity-20 text-[#1D3557] writing-vertical-rl rotate-180 uppercase tracking-widest font-body z-20 pointer-events-none">
         CRESCITECH × FRAIDAY 2026
       </div>
-      
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full h-full flex flex-col pt-[10vh] pb-[5vh]">
-        
-        {/* Título à esquerda top ocupando borda a borda */}
-        <div className="w-full mb-auto relative">
-          <div className="text-xs text-[#1D3557]/40 uppercase tracking-widest font-bold mb-6">04 / 09</div>
-          
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <h2 className="font-display font-extrabold text-[#1D3557] text-6xl md:text-[80px] leading-none mb-6 tracking-tighter w-full">
-              Portfólio completo de<br/> produtos e ofertas
-            </h2>
-            
-            <div className="w-12 h-1 bg-ct-accent mb-6" />
-            
-            <p className="font-body font-light text-[#A8C0D6] text-3xl">
-              Cada produto com dono claro, público definido e modelo de entrega.
-            </p>
-          </motion.div>
+
+      <div className="relative z-10 w-full h-full flex flex-col pt-[5vh] pb-[4vh]">
+        {/* Título unificado Centralizado */}
+        <div className="text-center w-full min-h-[5vh] mb-4 text-[#A8C0D6]">
+            <span className="text-[10px] font-bold uppercase tracking-widest bg-[#1D3557] px-4 py-1.5 rounded-full border border-[#00B5C5]/30 text-white/90">04 / 09 • Portfólio de Produtos</span>
         </div>
 
-        {/* Duas colunas na faixa inferior (aprox 70% ocupação em telas grandes) */}
-        <motion.div 
-          className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 bg-white/50 backdrop-blur-sm z-10 p-8 shadow-2xl border border-gray-100/50"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* Coluna Crescitech */}
-          <div className="flex flex-col">
-             <div className="pb-4 mb-4 border-b-2 border-[#1D3557]">
-               <h3 className="font-display font-extrabold text-[#1D3557] text-4xl">Crescitech</h3>
-             </div>
-             <motion.ul variants={container} className="flex flex-col gap-4">
-                {crescitechItems.map((text, i) => (
-                  <motion.li key={i} variants={item} className="flex items-start gap-4">
-                    <span className="text-ct-accent text-3xl leading-[20px] pt-1">•</span>
-                    <span className="font-body font-normal text-xl text-[#333333] leading-tight">{text}</span>
-                  </motion.li>
-                ))}
-             </motion.ul>
-          </div>
+        {/* TOP: 40vh Table Panels */}
+        <div className="w-full max-w-[1400px] mx-auto flex h-[40vh] gap-1 px-[5%]">
+            
+            {/* Crescitech Panel */}
+            <div className="w-1/2 h-full flex flex-col pt-6 pr-12 xl:pr-16 text-white border-r border-[#00B5C5]/20 justify-center">
+               <h3 className="font-display font-extrabold text-4xl xl:text-5xl mb-6 text-white">Crescitech</h3>
+               <motion.ul variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-4 font-body">
+                 {crescitechItems.map((obj, i) => (
+                    <motion.li key={i} variants={item} className="flex items-center gap-4">
+                      <div className="bg-[#00B5C5]/20 p-2 rounded text-[#00B5C5]">{obj.icon}</div>
+                      <span className="text-[15px] xl:text-[17px] font-medium leading-tight text-white">{obj.text}</span>
+                    </motion.li>
+                 ))}
+               </motion.ul>
+            </div>
 
-          {/* Coluna FrAiDay */}
-          <div className="flex flex-col">
-             <div className="pb-4 mb-4 border-b-2 border-[#F5A800]">
-               <h3 className="font-display font-extrabold text-[#F5A800] text-4xl">FrAiDay</h3>
-             </div>
-             <motion.ul variants={container} className="flex flex-col gap-4">
-                {fraidayItems.map((text, i) => (
-                  <motion.li key={i} variants={item} className="flex items-start gap-4">
-                    <span className="text-[#F5A800] text-xl font-bold pt-1 leading-[20px]">→</span>
-                    <span className="font-body font-normal text-xl text-[#333333] leading-tight">{text}</span>
-                  </motion.li>
-                ))}
-             </motion.ul>
-          </div>
-        </motion.div>
+            {/* FrAiDay Panel */}
+            <div className="w-1/2 h-full flex flex-col pt-6 pl-12 xl:pl-16 text-[#0D0D0D] justify-center">
+               <h3 className="font-display font-extrabold text-[#0D0D0D] text-4xl xl:text-5xl mb-6">FrAiDay</h3>
+               <motion.ul variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-4 font-body">
+                 {fraidayItems.map((obj, i) => (
+                    <motion.li key={i} variants={item} className="flex items-center gap-4">
+                      <div className="bg-[#0D0D0D]/10 p-2 rounded text-[#0D0D0D]">{obj.icon}</div>
+                      <span className="text-[15px] xl:text-[17px] font-bold leading-tight text-[#0D0D0D]">{obj.text}</span>
+                    </motion.li>
+                 ))}
+               </motion.ul>
+            </div>
+        </div>
+
+        {/* BOTTOM: 45vh Mockups Side By Side */}
+        <div className="w-full max-w-[1400px] mx-auto flex flex-1 gap-12 px-[5%] mt-auto items-end pb-4 pt-10 relative z-20">
+            
+            {/* Mockup Maturidade (Abaixo Crescitech) */}
+            <motion.div 
+               className="w-1/2 bg-white rounded-xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] border border-gray-200 flex flex-col h-[90%] overflow-hidden"
+               initial={{ opacity: 0, y: 50 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.3 }}
+               viewport={{ once: true }}
+            >
+               <div className="bg-[#1D3557] px-4 py-3 flex items-center justify-between shrink-0">
+                 <span className="text-white font-bold font-body text-[12px] uppercase tracking-wider">Diagnóstico Maturidade</span>
+                 <Settings size={14} className="text-[#00B5C5]" />
+               </div>
+               <div className="p-6 flex-1 flex flex-col overflow-hidden">
+                  <div className="w-full h-8 bg-gray-200 rounded-full mb-6 overflow-hidden flex shrink-0">
+                     <div className="h-full bg-[#00B5C5] w-[45%] flex items-center justify-center text-[10px] text-white font-bold tracking-widest">45%</div>
+                  </div>
+                  <div className="grid grid-cols-1 gap-4 flex-1 overflow-auto custom-scrollbar pr-2">
+                     {["Cultura B2B", "Infra de Dados", "Automação", "Processos"].map((lbl, idx) => (
+                        <div key={idx} className="flex items-center justify-between text-[13px] font-body text-gray-700 shrink-0">
+                          <span className="font-bold min-w-[110px]">{lbl}</span>
+                          <div className="flex-1 ml-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+                             <div className="h-full bg-[#1D3557]" style={{ width: `${Math.max(30, Math.random() * 60 + 20)}%` }}></div>
+                          </div>
+                        </div>
+                     ))}
+                  </div>
+               </div>
+            </motion.div>
+
+            {/* Mockup Kanban FollowUp (Abaixo FrAiDay) */}
+            <motion.div 
+               className="w-1/2 bg-white/95 rounded-xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.1)] border border-gray-200 flex flex-col h-[90%] overflow-hidden backdrop-blur-xl"
+               initial={{ opacity: 0, y: 50 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.5 }}
+               viewport={{ once: true }}
+            >
+               <div className="bg-[#F5A800] px-4 py-3 flex items-center justify-between shrink-0">
+                 <span className="text-[#0D0D0D] font-bold font-body text-[12px] uppercase tracking-wider">Pipeline FollowUp</span>
+                 <Briefcase size={14} className="text-[#0D0D0D]" />
+               </div>
+               <div className="p-4 flex-1 flex gap-3 overflow-x-auto custom-scrollbar items-start">
+                   {["Prospecção", "Negociação", "Fechado"].map((col, cidx) => (
+                      <div key={cidx} className="bg-gray-100 flex-1 rounded-lg border border-gray-200 p-3 flex flex-col min-w-[120px] max-h-full overflow-y-auto custom-scrollbar">
+                         <span className="text-[11px] font-bold text-gray-800 uppercase mb-3 text-center">{col}</span>
+                         
+                         {/* Card genérico 1 */}
+                         <div className="bg-white p-3 rounded mb-2 shadow-sm border border-gray-100">
+                            <div className="w-1/2 h-2 bg-[#F5A800]/80 rounded mb-3"></div>
+                            <div className="w-full h-1.5 bg-gray-200 rounded mb-1.5"></div>
+                            <div className="w-3/4 h-1.5 bg-gray-200 rounded"></div>
+                         </div>
+
+                         {/* Card genérico 2 para dar volume (so na proj ou negoc) */}
+                         {cidx !== 2 && (
+                            <div className="bg-white p-3 rounded shadow-sm border border-gray-100 mb-2">
+                               <div className="w-2/3 h-2 bg-[#1D3557]/80 rounded mb-3"></div>
+                               <div className="w-full h-1.5 bg-gray-200 rounded"></div>
+                            </div>
+                         )}
+                      </div>
+                   ))}
+               </div>
+            </motion.div>
+            
+        </div>
       </div>
     </section>
   );
