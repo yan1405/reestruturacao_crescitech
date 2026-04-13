@@ -7,21 +7,21 @@ export default function NavIndicator({ current, onChange }) {
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
       {points.map((_, index) => {
         const isActive = current === index;
-        const activeColor = index === 3 ? 'bg-fr-yellow' : 'bg-ct-accent';
         
         return (
           <motion.div
             key={index}
             onClick={() => onChange(index)}
-            className={`rounded-full cursor-pointer transition-colors duration-300 ${
-              isActive ? activeColor : 'bg-white bg-opacity-40'
-            }`}
-            animate={{
-              width: isActive ? 12 : 8,
-              height: isActive ? 12 : 8,
-              opacity: isActive ? 1 : 0.4
+            className="rounded-full cursor-pointer transition-colors duration-300 pointer-events-auto"
+            style={{ 
+              backgroundColor: isActive ? '#F5A800' : 'rgba(255, 255, 255, 0.3)' 
             }}
-            whileHover={{ scale: 1.2 }}
+            animate={{
+              width: 10,
+              height: 10,
+              scale: isActive ? 1.2 : 1
+            }}
+            whileHover={{ scale: 1.4 }}
           />
         );
       })}

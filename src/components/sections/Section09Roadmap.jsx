@@ -12,14 +12,14 @@ export default function Section09Roadmap() {
     show: { x: 0, opacity: 1, transition: { duration: 0.7, ease: "easeOut" } }
   };
 
-  const c_yan = <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#FF6B35]/20 text-[#FF6B35] text-[10px] uppercase font-montserrat font-bold shrink-0 shadow-sm"><User size={10} /> Yan</span>;
-  const c_joao = <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#00B5C5]/20 text-[#00B5C5] text-[10px] uppercase font-montserrat font-bold shrink-0 shadow-sm"><User size={10} /> João</span>;
-  const c_ambos = <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/10 text-white/80 text-[10px] uppercase font-montserrat font-bold shrink-0 shadow-sm"><Users size={10} /> Ambos</span>;
+  const c_yan = <span className="inline-flex items-center gap-1 px-2 py-1 rounded-[4px] bg-white/10 text-white text-[10px] uppercase font-montserrat font-bold shrink-0 shadow-sm border border-white/5"><User size={10} className="text-[#FF6B35]" /> Yan</span>;
+  const c_joao = <span className="inline-flex items-center gap-1 px-2 py-1 rounded-[4px] bg-white/10 text-white text-[10px] uppercase font-montserrat font-bold shrink-0 shadow-sm border border-white/5"><User size={10} className="text-[#00B5C5]"/> João</span>;
+  const c_ambos = <span className="inline-flex items-center gap-1 px-2 py-1 rounded-[4px] bg-white/10 text-white/80 text-[10px] uppercase font-montserrat font-bold shrink-0 shadow-sm border border-white/5"><Users size={10} className="text-[#F5A800]" /> Ambos</span>;
 
   return (
-    <section className="snap-section bg-[#1D3557] relative p-0 flex flex-col pt-[5vh] pb-[6vh]">
-      <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-ct-accent blur-[80px] opacity-[0.12] pointer-events-none translate-x-1/4 -translate-y-1/4" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-[#F5A800] blur-[80px] opacity-[0.08] pointer-events-none -translate-x-1/4 translate-y-1/4" />
+    <section className="snap-section bg-[#111827] relative p-0 flex flex-col pt-[5vh] pb-[6vh]">
+      <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-ct-accent blur-[80px] opacity-[0.08] pointer-events-none translate-x-1/4 -translate-y-1/4" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-[#F5A800] blur-[80px] opacity-[0.05] pointer-events-none -translate-x-1/4 translate-y-1/4" />
       
       <div className="bg-dots-white" />
 
@@ -55,7 +55,7 @@ export default function Section09Roadmap() {
                  { t: "Escala Paid Media G3", b: "Aceleração total de tráfego de vendas", o: c_ambos }
                ]}
              ].map((col, idx) => (
-                <motion.div variants={item} key={idx} className="flex flex-col bg-[#1D3557]/40 border border-[#00B5C5]/20 p-8 rounded-xl shadow-2xl h-full backdrop-blur-md relative overflow-hidden shrink-0">
+                <motion.div variants={item} key={idx} className="flex flex-col bg-[#1e293b]/50 border border-white/5 p-8 rounded-xl shadow-2xl h-full backdrop-blur-md relative overflow-hidden shrink-0">
                    <div className="w-full absolute top-0 left-0 border-t-[5px] border-[#00B5C5]" />
                    <h3 className="font-impact text-[#00B5C5] text-3xl mb-8 uppercase tracking-widest">{col.title}</h3>
                    
